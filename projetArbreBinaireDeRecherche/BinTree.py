@@ -81,54 +81,7 @@ class BinTree:
         else:
             return self.__right.hauteur() + 1
 
-"""
-tree = BinTree()
-tree.setRoot('P')
-tree.setGauche(BinTree('Y'))
-tree.setDroit(BinTree('T'))
-print(tree)
-"""
 
-pedigree = BinTree("Mango", BinTree("Domino", BinTree("Isaac"), BinTree("Douchka")),BinTree("Pinkie", BinTree("Tango", BinTree("Tim"), BinTree("Iris")))
-
-def nombre_chiens_rec(tree:BinTree, n):
-    if tree.estVide():
-        return 0
-    elif n == 0:
-        return 1
-    else:
-        return nombre_chiens_rec(tree.gauche(), n - 1) + nombre_chiens_rec(tree.droit(), n - 1)
-
-def nombre_chiens_iterative(tree:BinTree, n):
-
-    liste = [tree]
-    for i in range(n + 1):
-        if i != n:
-            temp = []
-            for j in liste:
-                if j.gauche().estVide():
-                    sag = []
-                if j.droit().estVide():
-                    sad = []
-                else:
-                    sag = [j.gauche()]
-                    sad = [j.droit()]
-                temp += sag + sad
-            liste = temp
-        if i == n:
-            temp = []
-            for j in liste:
-               temp += [j.racine()]
-            liste = temp
-    return len(liste)
-var = 3
-
-print(pedigree)
-print(nombre_chiens_rec(pedigree, var))
-print(nombre_chiens_iterative(pedigree, var))
-
-
-print(pedigree.droit().gauche().gauche().racine())
 
 
 
