@@ -6,7 +6,7 @@ from BinTree import BinTree
 
 def estABR(A:BinTree) -> bool:
     """
-    Entrée, A : objet BinTree
+    Entrée, A : Objet BinTree
     Sortie : Booléen
     Renvoie True si A  est un arbre binaire de recherche False sinon
     """
