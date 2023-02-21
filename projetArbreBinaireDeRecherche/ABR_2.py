@@ -52,7 +52,7 @@ def rechercheCle(A:BinTree, n :int) -> bool:
     assert type(n) is int , 'n doit être un entier !'
     #programme
     if A.estVide():
-        return False #Si ojn tombe sur un arbre vide -> les arbres se sont echainés et à aucun moment la valeur d'une racine n'à été égale à la valeur cherchée, cette dernière n'est donc pas dans l'arbre
+        return False #expliquer la ligne
     if A.racine() == n: #Si la racine est le nombre cherché -> renvoie True, la valeur est bien dans l'arbre
         return True
     else:  #Dans les autres cas il faut parcourir récursivement l'arbre -> 2 cas possibles dans un ABR
