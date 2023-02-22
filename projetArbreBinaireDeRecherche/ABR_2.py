@@ -48,9 +48,6 @@ def rechercheCle(A:BinTree, n :int) -> bool:
     Sortie : Booléen
     Renvoie True si la clé n est dans l'arbre A, False sinon
     """
-    #assertion
-    assert type(n) is int , 'n doit être un entier !'
-    #programme
     if A.estVide():
         return False #le cas élémentaire est un arbre vide. Si on tombe sur une vide, ça veut dire qu'on a fait toutes les clés possibles sans tomber sur celle recherchée
     if A.racine() == n: #Si la racine est le nombre cherché -> renvoie True, la valeur est bien dans l'arbre
