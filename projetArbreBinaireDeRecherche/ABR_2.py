@@ -132,7 +132,7 @@ notIntList = ["str", 4.67, 2, 8, 9, 0]
 newArbre = creerABR(intList)
 print(newArbre)
 print(f"estABR(newArbre) -> {estABR(newArbre)}") # Renvoie True
-#creerABR(notIntList)
+
     #Fin des tests
 print("---------------------------")
 
@@ -141,3 +141,9 @@ print("Arbre Binaire : ", "\n", " ")
 print(arbreBinaire)
 print(f"estABR(arbreBinaire) -> {estABR(arbreBinaire)}") #Renvoie False
     #Fin des tests
+"""
+    #Tests d'assertions
+creerABR(notIntList)
+insereCle(arbreBinaire)
+
+"""
