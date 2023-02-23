@@ -73,7 +73,7 @@ def creerABR(intList:list) -> BinTree:
 
 @testABR
 def sommeCle(A:BinTree) -> int:
-    """ Rnvoie la somme des clés de l'ABR donné en args """
+    """ Renvoie la somme des clés de l'ABR donné en args """
     if A.estVide():
         return 0
     else:
