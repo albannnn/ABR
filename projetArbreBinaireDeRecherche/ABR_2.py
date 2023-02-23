@@ -22,7 +22,6 @@ def estABR(A:BinTree) -> bool:
     """ Renvoie True si A  est un arbre binaire de recherche, False sinon """
     #assertion
     assert type(A) is BinTree, "!! A doit être un arbre binaire !!"
-
     #Programme
     # Il y a 5 possibilités à un arbre : vide, feuille, 1 SAG, 1 SAG, 1 SAG et 1 SAD
     if A.estVide() or A.estFeuille():# 2 premier cas :Arbre vide ou feuille -> feuille arbre de longueur 1, qui n'a qu'un noeud
@@ -48,20 +47,15 @@ def rechercheCle(A:BinTree, n :int) -> bool:
         else: #dans tout les autres la valeur de n est strictement supérieure à celle de racine -> elle se trouve donc dans le SAD
             return rechercheCle(A.droit(), n) #Résolution à partir de SAD
 
-
 @testABR
 def insereCle(A:BinTree, n:int) -> BinTree:
-    """ Renvoie un BinTree avec """
-
+    """ Renvoie un BinTree avec la clé insérée au bon endroit """
     if A.estVide(): #Si l'arbre est vide, on peut ajouter une clé sans contraintes
         return BinTree(n)
     if n <= A.racine(): #D'après la définition de l'ABR, si la valeur est <= à la racine, alors elle est dans la partie gauche de l'arbre
         return BinTree(A.racine(), insereCle(A.gauche(), n), A.droit())
     else: #dans tous les autres cas, elle est dans la partie droite de l'arbre
         return BinTree(A.racine(), A.gauche(), insereCle(A.droit(), n))
-
-
-
 
 def creerABR(intList:list) -> BinTree:
     """ Renvoie un ABR à partir de la liste d'entiers passée en args """
