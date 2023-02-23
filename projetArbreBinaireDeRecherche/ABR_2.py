@@ -19,11 +19,7 @@ def testABR(fonction):  #généraliser les assertions sur l'ABR
     ## FONCTIONS PRINCIPALES
 
 def estABR(A:BinTree) -> bool:
-    """
-    Entrée, A : objet BinTree
-    Sortie : Booléen
-    Renvoie True si A  est un arbre binaire de recherche False sinon
-    """
+    """ Renvoie True si A  est un arbre binaire de recherche, False sinon """
     #assertion
     assert type(A) is BinTree, "!! A doit être un arbre binaire !!"
 
@@ -41,13 +37,7 @@ def estABR(A:BinTree) -> bool:
 
 @testABR
 def rechercheCle(A:BinTree, n :int) -> bool:
-    """
-    Entrée :
-            A : Objet Bintree
-            n : entier
-    Sortie : Booléen
-    Renvoie True si la clé n est dans l'arbre A, False sinon
-    """
+    """ Renvoie True si la clé n est dans l'arbre A, False sinon """
     if A.estVide():
         return False #le cas élémentaire est un arbre vide. Si on tombe sur une vide, ça veut dire qu'on a fait toutes les clés possibles sans tomber sur celle recherchée
     if A.racine() == n: #Si la racine est le nombre cherché -> renvoie True, la valeur est bien dans l'arbre
@@ -61,13 +51,7 @@ def rechercheCle(A:BinTree, n :int) -> bool:
 
 @testABR
 def insereCle(A:BinTree, n:int) -> BinTree:
-    """
-    Entrées :
-            A : Objet Bintree
-            n : entier
-    Sortie : Objet BinTree
-    Renvoie un BinTree avec
-    """
+    """ Renvoie un BinTree avec """
 
     if A.estVide(): #Si l'arbre est vide, on peut ajouter une clé sans contraintes
         return BinTree(n)
@@ -80,11 +64,7 @@ def insereCle(A:BinTree, n:int) -> BinTree:
 
 
 def creerABR(intList:list) -> BinTree:
-    """
-    Entrée : intList : list d'entier
-    Sortie : Bintree
-    Renvoie un ABR à partir de la liste d'entiers passée en args
-    """
+    """ Renvoie un ABR à partir de la liste d'entiers passée en args """
     arbre = BinTree() #création d'un arbre vide dans lequel on insérera chaque valeur de intList
     while len(intList) != 0: #tant que la liste n'est pas vide
         temp = intList.pop() # initialisation d'une variable temporaire qui contient la valeur à insérer dans l'arbre
@@ -93,11 +73,7 @@ def creerABR(intList:list) -> BinTree:
 
 @testABR
 def sommeCle(A:BinTree) -> int:
-    """
-    Entrée : A -> BinTree
-    Sortie : int
-    Renvoie la somme des clés de l'ABR donné en args
-    """
+    """ Rnvoie la somme des clés de l'ABR donné en args """
     if A.estVide():
         return 0
     else:
