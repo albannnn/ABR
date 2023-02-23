@@ -11,7 +11,7 @@ def testABR(fonction):  #généraliser les assertions sur l'ABR
     def decorateur(*args): #création d'un décorateur pour faire toutes les assertions liées aux ABR
         assert estABR(args[0]), "!! A doit être un arbre binaire de recherche !!" #args[0] sera toujours l'arbre dans lequel on évolue
         if len(args) > 1:
-            assert type(args[1]) == int, '!!Un  ABR est composé uniquement de nombres entiers !!'  #gestion du type, on travaille ici avec des nombres entiers uniquement
+            assert type(args[1]) == int, '!! Un  ABR est composé uniquement de nombres entiers !!'  #gestion du type, on travaille ici avec des nombres entiers uniquement
         result = fonction(*args)  #la fonction prendra les arguments qu'on lui mets, pas d'importance
         return result
     return decorateur
