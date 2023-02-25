@@ -87,9 +87,4 @@ class ABR(BinTree):
         else:
             return self.racine() + self.gauche().__sommeCle__() + self.droit().__sommeCle__()
  
-     
- 
-arbre = ABR(3, ABR(1), ABR(5))
-arbre = arbre.insereCle(2)
 
-print(arbre)
