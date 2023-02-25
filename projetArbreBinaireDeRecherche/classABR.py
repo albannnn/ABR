@@ -54,7 +54,7 @@ class ABR(BinTree):
         assert type(n) is int , 'n doit être un entier !'
         #programme
         if self.estVide():
-            return False #Si ojn tombe sur un arbre vide -> les arbres se sont echainés et à aucun moment la valeur d'une racine n'à été égale à la valeur cherchée, cette dernière n'est donc pas dans l'arbre
+            return False #Si on tombe sur un arbre vide -> les arbres se sont echainés et à aucun moment la valeur d'une racine n'à été égale à la valeur cherchée, cette dernière n'est donc pas dans l'arbre
         if self.racine() == n: #Si la racine est le nombre cherché -> renvoie True, la valeur est bien dans l'arbre
             return True
          
