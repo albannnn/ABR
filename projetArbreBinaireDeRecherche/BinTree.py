@@ -151,7 +151,7 @@ class BinTree:
         else:
             return self.gauche().infixe() + self.droit().infixe()
     
-    def BFS(self):
+    def bFS(self):
         """ Parcours en largeur de l'arbre avec l'algorithme BFS"""
         file = []
         res = []
