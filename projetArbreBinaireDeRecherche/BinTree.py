@@ -149,7 +149,7 @@ class BinTree:
         if self.estVide():
             return []
         else:
-            return self.gauche().infixe() + self.droit().infixe()
+            return self.gauche().infixe() + [self.racine()] self.droit().infixe()
     
     def BFS(self):
         """ Parcours en largeur de l'arbre avec l'algorithme BFS"""
