@@ -1,5 +1,7 @@
 
 
+
+
 ## Classe
         
 class BinTree:
@@ -51,7 +53,7 @@ class BinTree:
 
     ## Méthodes
     
-    def droit(self):
+    def droit(self) -> all:
         """
         Renvoie le sous-arbre droit (un arbre vide si l'arbre droit vaut None)
         """
@@ -60,7 +62,7 @@ class BinTree:
         else :
             return self.right
     
-    def gauche(self):
+    def gauche(self) -> all:
         """
         Renvoie le sous-arbre gauche (un arbre vide si l'arbre gauche vaut None).
         """
@@ -69,13 +71,13 @@ class BinTree:
         else :
             return self.left
     
-    def racine(self):
+    def racine(self) -> all:
         """
         Renvoie la valeur de la racine A de l'arbre, None si l'arbre est vide.
         """
         return self.root
     
-    def estVide(self): 
+    def estVide(self) -> bool: 
         """
         Renvoie True si l'arbre est vide.
         """
@@ -83,13 +85,13 @@ class BinTree:
     
     
     
-    def estFeuille(self)->bool:
+    def estFeuille(self) -> bool:
         """
         Renvoie True si l'arbre est une feuille.
         """
         return self.gauche().estVide() and self.droit().estVide()
         
-    def setDroit(self,B):
+    def setDroit(self,B) -> None:
         """
         L'arbre droit devient B.
         """
@@ -97,7 +99,7 @@ class BinTree:
         assert (isinstance(B,BinTree) or B==None), "L'argument doit être une instance de BinTree ou None"
         self.right=B
     
-    def setGauche(self,B):
+    def setGauche(self,B) -> None:
         """
         L'arbre gauche devient B.
         """
@@ -105,13 +107,32 @@ class BinTree:
         assert (isinstance(B,BinTree) or B==None), "L'argument doit être une instance de BinTree ou None"
         self.left=B
         
-    def setRacine(self,r):
+    def setRacine(self,r) -> None:
         """
         La valeur de la racine devient r.
         """
         self.root=r
         
     ## Mesures  
+    def maximum(self) -> int:
+        """Donne le maximum de l'arbre si celui-ci comporte des noeuds"""
+        if not self.estVide():
+            maximum = self.infixe()[0]
+            for elt in self.infixe():
+                if elt > maximum:
+                    maximum = elt
+            return maximum
+        else:
+            return [] 
+    def minimum(self):
+        if not self.estVide():
+            minimum = self.infixe()[0]
+            for elt in self.infixe():
+                if elt < minimum:
+                    minimum = elt
+            return minimum
+        else:
+            return []
     
     def taille(self)->int:
         """
@@ -149,7 +170,7 @@ class BinTree:
         if self.estVide():
             return []
         else:
-            return self.gauche().infixe() + self.droit().infixe()
+            return self.gauche().infixe() + [self.racine()] + self.droit().infixe()
     
     def BFS(self):
         """ Parcours en largeur de l'arbre avec l'algorithme BFS"""
