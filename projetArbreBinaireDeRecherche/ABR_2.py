@@ -17,22 +17,18 @@ def testABR(fonction):  #généraliser les assertions sur l'ABR
     return decorateur
 
     ## FONCTIONS PRINCIPALES
-
 def estABR(A:BinTree) -> bool:
     """ Renvoie True si A  est un arbre binaire de recherche, False sinon """
     #assertion
     assert type(A) is BinTree, "!! A doit être un arbre binaire !!"
     #Programme
-    # Il y a 5 possibilités à un arbre : vide, feuille, 1 SAG, 1 SAG, 1 SAG et 1 SAD
-    if A.estVide() or A.estFeuille():# 2 premier cas :Arbre vide ou feuille -> feuille arbre de longueur 1, qui n'a qu'un noeud
-        return True #un arbre vide ou une feuille est un arbre binaire de recherche on renvoie True
-    if A.gauche().estVide() and not A.droit().estVide(): #3eme cas : Pas de SAG mais un SAD
-        return A.droit().racine() > A.racine() and estABR(A.droit())  #comparaison de l'ABR et appel récursif à partir du SAD uniquement
-    if A.droit().estVide() and not A.gauche().estVide(): #4eme cas : Pas de SAD mais un SAG
-        return A.gauche().racine() <= A.racine() and estABR(A.gauche()) #comparaison de l'ABR et appel récursif à partir du SAG uniquement
-    else: #5 cas possible : Présence d'un SAG et d'un SAD
-        return (A.gauche().racine() <= A.racine() and A.droit().racine() > A.racine()) and (estABR(A.gauche()) and estABR(A.droit()))
-        #comparaisons de l'ABR et appels récursifs des SAG et SAD
+    if A.estVide() or A.estFeuille():
+        return True
+    if not A.gauche().estVide() and A.gauche().maximum() > A.racine():
+            return False
+    if not A.droit().estVide() and A.droit().maximum() <= A.racine():
+            return False
+    return estABR(A.gauche()) and estABR(A.droit())
 
 @testABR
 def rechercheCle(A:BinTree, n :int) -> bool:
