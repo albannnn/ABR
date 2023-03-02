@@ -1,5 +1,8 @@
 ## Projet : Arbre Binaire de Recherche
-""" Groupe 2 : Alban, Lucas, Tuan """
+""" Groupe 2 : Alban, Lucas, Tuan 
+Pour satisfaire à la création de certaines fonctions telles que estABR, des méthodes ont été ajoutées à la classe BinTree. 
+Pour le bon déroulement du programme, il faut donc veiller à bien utiliser la classe Bintree mise à disposition dans le dossier.
+"""
 ##IMPORT
 from BinTree import BinTree
 
