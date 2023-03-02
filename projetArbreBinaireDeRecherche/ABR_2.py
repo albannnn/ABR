@@ -24,9 +24,9 @@ def estABR(A:BinTree) -> bool:
     #Programme
     if A.estVide() or A.estFeuille(): #Un arbre vide est un abr par définition
         return True
-    if not A.gauche().estVide() and A.gauche().maximum() > A.racine(): #Si une clé de l'ABR gauche est supérieur à la racine, ce n'est pas un abr
+    if not A.gauche().estVide() and A.gauche().maximum() > A.racine(): #Si une clé du sag est supérieure à la racine, ce n'est pas un abr
             return False
-    if not A.droit().estVide() and A.droit().maximum() <= A.racine():
+    if not A.droit().estVide() and A.droit().maximum() <= A.racine(): #Si une clé sad est inférieure ou égale à la racine, ce n'est pas un abr
             return False
     return estABR(A.gauche()) and estABR(A.droit()) #on résoud à partir des abr droits et gauches 
 
@@ -81,11 +81,10 @@ print("Arbre Binaire de Recherche : ", "\n", " ")
 print(arbreBinaireRecherche)
 print(f"estABR(arbreBinaireRecherche) -> {estABR(arbreBinaireRecherche)}") # Renvoie True
 print(f"rechercheCle(arbreBinaireRecherche, 28) -> {rechercheCle(arbreBinaireRecherche, 28)}") #Renvoie True
-print(f"rechercheCle(arbreBinaireRecherche, 99) -> {rechercheCle(arbreBinaireRecherche, 99)}") #Renvoie True
 arbreBinaireRechercheModif = insereCle(arbreBinaireRecherche, 22)
 print(arbreBinaireRechercheModif) #Affiche L'ABR avec la modification
-print(f"La somme des clés de arbreBinaireRechreche vaut {sommeCle(arbreBinaireRecherche)}")
-print(f"La somme des clés de arbreBinaireRechrecheModif vaut {sommeCle(arbreBinaireRechercheModif)}")
+print(f"La somme des clés de arbreBinaireRecherche vaut {sommeCle(arbreBinaireRecherche)}")
+print(f"La somme des clés de arbreBinaireRechercheModif vaut {sommeCle(arbreBinaireRechercheModif)}")
 
     #Fin des tests
 print("---------------------------")
