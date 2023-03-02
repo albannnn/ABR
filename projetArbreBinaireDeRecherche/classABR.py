@@ -17,7 +17,7 @@ class ABR(BinTree):
         if not self.__estABR__():
             raise ValueError("Les valeurs de l'arbre ne permettent pas la création d'un arbre binaire de recherche")
          
-    ## Impression : surcharge de la méthode str car on change les carctères entre les racines par > et <= 
+    ## Impression : surcharge de la méthode str car on change les carctères entre les noeuds par > et <= 
     def __str__(self,n=0,car=""):
         """
         Fournit une vue lisible de l'arbre.
@@ -35,7 +35,7 @@ class ABR(BinTree):
         return ""
  
  
-    def __isInABR__(self, n:int) -> bool:
+    def isInABR(self, n:int) -> bool:
         """
         Renvoie True si la clé n est dans l'arbre A, False sinon
         """
@@ -66,12 +66,12 @@ class ABR(BinTree):
         else: #dans tous les autres cas, elle est dans la partie droite de l'arbre
             return ABR(self.racine(), self.gauche(), self.droit().insereCle(n))
          
-    def __sommeCle__(self) -> int:
+    def sommeCle(self) -> int:
         """
         Renvoie la somme des clés de l'ABR donné en args
         """
         if self.estVide():
             return 0
         else:
-            return self.racine() + self.gauche().__sommeCle__() + self.droit().__sommeCle__()
+            return self.racine() + self.gauche().sommeCle() + self.droit().sommeCle()
  
