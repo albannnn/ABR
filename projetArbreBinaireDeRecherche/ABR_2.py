@@ -22,13 +22,13 @@ def estABR(A:BinTree) -> bool:
     #assertion
     assert type(A) is BinTree, "!! A doit être un arbre binaire !!"
     #Programme
-    if A.estVide() or A.estFeuille():
+    if A.estVide() or A.estFeuille(): #Un arbre vide est un abr par définition
         return True
-    if not A.gauche().estVide() and A.gauche().maximum() > A.racine():
+    if not A.gauche().estVide() and A.gauche().maximum() > A.racine(): #Si une clé de l'ABR gauche est supérieur à la racine, ce n'est pas un abr
             return False
     if not A.droit().estVide() and A.droit().maximum() <= A.racine():
             return False
-    return estABR(A.gauche()) and estABR(A.droit())
+    return estABR(A.gauche()) and estABR(A.droit()) #on résoud à partir des abr droits et gauches 
 
 @testABR
 def rechercheCle(A:BinTree, n :int) -> bool:
@@ -64,7 +64,7 @@ def creerABR(intList:list) -> BinTree:
 @testABR
 def sommeCle(A:BinTree) -> int:
     """ Renvoie la somme des clés de l'ABR donné en args """
-    if A.estVide():
+    if A.estVide(): #la somme des clés vaut 0 si il n'y a pas de clés
         return 0
     else:
         return A.racine() + sommeCle(A.gauche()) + sommeCle(A.droit())
