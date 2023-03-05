@@ -59,16 +59,16 @@ class ABR(BinTree):
         """
         Renvoie un ABR avec la clé insérée au bon endroit
         """
-        if self.racine() >= n:
-            if self.gauche().estVide():
+        if self.racine() >= n:#1ere chose à faire, savoir si la racine est supérieure ou inférieure à la valeure recherchée
+            if self.gauche().estVide():# Si l'arbre dans lequel doit se trouver la valeur à insérer est vide on insère la valeur
                 self.setGauche(ABR(n))
             else:
-                self.gauche().insereCle(n)
+                self.gauche().insereCle(n)#sinon appel récursif de la fonction à partir de l'arbre dans lequel elle doit se trouver
         else:
             if self.droit().estVide():
                 self.setDroit(ABR(n))
             else:
-                self.droit().insereCle(n)
+                self.droit().insereCle(n)#pareil avec l'arbre droit 
         
     def sommeCle(self) -> int:
         """
