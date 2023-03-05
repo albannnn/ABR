@@ -49,12 +49,16 @@ def rechercheCle(A:BinTree, n :int) -> bool:
 @testABR
 def insereCle(A:BinTree, n:int) -> BinTree:
     """ Renvoie un BinTree avec la clé insérée au bon endroit """
-    if A.estVide(): #Si l'arbre est vide, on peut ajouter une clé sans contraintes
-        return BinTree(n)
-    if n <= A.racine(): #D'après la définition de l'ABR, si la valeur est <= à la racine, alors elle est dans la partie gauche de l'arbre
-        return BinTree(A.racine(), insereCle(A.gauche(), n), A.droit())
-    else: #dans tous les autres cas, elle est dans la partie droite de l'arbre
-        return BinTree(A.racine(), A.gauche(), insereCle(A.droit(), n))
+    if A.racine() >= n: #1ere chose à faire, savoir si la racine est supérieure ou inférieure à la valeure recherchée
+        if A.gauche().estVide(): # Si l'arbre dans lequel doit se trouver la valeur à insérer est vide on insère la valeur
+            A.setGauche(BinTree(n)) 
+        else:
+            insereCle(A.gauche(), n) #sinon appel récursif de la fonction à partir de l'arbre dans lequel elle doit se trouver
+    else:
+        if A.droit().estVide(): #pareil avec l'arbre droit 
+            A.setDroit(BinTree(n))
+        else:
+            insereCle(A.droit(), n)
 
 def creerABR(intList:list) -> BinTree:
     """ Renvoie un ABR à partir de la liste d'entiers passée en args """
