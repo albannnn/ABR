@@ -49,23 +49,27 @@ def rechercheCle(A:BinTree, n :int) -> bool:
 @testABR
 def insereCle(A:BinTree, n:int) -> BinTree:
     """ Renvoie un BinTree avec la clé insérée au bon endroit """
-    if A.racine() >= n: #1ere chose à faire, savoir si la racine est supérieure ou inférieure à la valeure recherchée
-        if A.gauche().estVide(): # Si l'arbre dans lequel doit se trouver la valeur à insérer est vide on insère la valeur
-            A.setGauche(BinTree(n)) 
+    if not A.estVide(): #il faut d'abord vérifier que l'arbre dans lequel on est n'est pas vide
+        if A.racine() >= n: #1ere chose à faire, savoir si la racine est supérieure ou inférieure à la valeure recherchée
+            if A.gauche().estVide(): # Si l'arbre dans lequel doit se trouver la valeur à insérer est vide on insère la valeur
+                A.setGauche(BinTree(n)) 
+            else:
+                insereCle(A.gauche(), n) #sinon appel récursif de la fonction à partir de l'arbre dans lequel elle doit se trouver
         else:
-            insereCle(A.gauche(), n) #sinon appel récursif de la fonction à partir de l'arbre dans lequel elle doit se trouver
+            if A.droit().estVide(): #pareil avec l'arbre droit 
+                A.setDroit(BinTree(n))
+            else:
+                insereCle(A.droit(), n)
     else:
-        if A.droit().estVide(): #pareil avec l'arbre droit 
-            A.setDroit(BinTree(n))
-        else:
-            insereCle(A.droit(), n)
+        A.setRacine(n) #Si notre arbre est vide il y a juste à changer la valeur de la racine
+        
 
 def creerABR(intList:list) -> BinTree:
     """ Renvoie un ABR à partir de la liste d'entiers passée en args """
     arbre = BinTree() #création d'un arbre vide dans lequel on insérera chaque valeur de intList
     while len(intList) != 0: #tant que la liste n'est pas vide
         temp = intList.pop() # initialisation d'une variable temporaire qui contient la valeur à insérer dans l'arbre
-        arbre = insereCle(arbre, temp)
+        insereCle(arbre, temp) 
     return arbre
 
 @testABR
@@ -76,25 +80,28 @@ def sommeCle(A:BinTree) -> int:
     else:
         return A.racine() + sommeCle(A.gauche()) + sommeCle(A.droit())
 
-## PROGRAMME PRINCIPAL
+## TESTS
 
 arbreBinaireRecherche = BinTree(30, BinTree(25, BinTree(18, BinTree(9)), BinTree(29, BinTree(26, BinTree(), BinTree(28)))), BinTree(41, BinTree(), BinTree(52, BinTree(48), BinTree(60))) ) #Arbre binaire de recherche
 arbreBinaire = BinTree(30, BinTree(25, BinTree(18, BinTree(24)), BinTree(22, BinTree(26, BinTree(), BinTree(28)))), BinTree(41, BinTree(), BinTree(52, BinTree(48), BinTree(60)))) #Arbre binaire
 
-## TESTS
+
 
     # Tests de l'ABR
 print("Arbre Binaire de Recherche : ", "\n", " ")
 print(arbreBinaireRecherche)
 print(f"estABR(arbreBinaireRecherche) -> {estABR(arbreBinaireRecherche)}") # Renvoie True
 print(f"rechercheCle(arbreBinaireRecherche, 28) -> {rechercheCle(arbreBinaireRecherche, 28)}") #Renvoie True
-arbreBinaireRechercheModif = insereCle(arbreBinaireRecherche, 22)
-print(arbreBinaireRechercheModif) #Affiche L'ABR avec la modification
+insereCle(arbreBinaireRecherche, 22)
+
+print(arbreBinaireRecherche) #Affiche L'ABR avec la modification
 print(f"La somme des clés de arbreBinaireRecherche vaut {sommeCle(arbreBinaireRecherche)}")
-print(f"La somme des clés de arbreBinaireRechercheModif vaut {sommeCle(arbreBinaireRechercheModif)}")
+print(f"La somme des clés de arbreBinaireRecherche vaut {sommeCle(arbreBinaireRecherche)}")
 
     #Fin des tests
+    
 print("---------------------------")
+
     #Tests de création d'un ABR
 intList = [11, 2, 7, 37, 27, 4, 5, 12]
 notIntList = ["str", 4.67, 2, 8, 9, 0]
@@ -103,6 +110,7 @@ print(newArbre)
 print(f"estABR(newArbre) -> {estABR(newArbre)}") # Renvoie True
 
     #Fin des tests
+    
 print("---------------------------")
 
     # Tests d'un BinTree quelconque
