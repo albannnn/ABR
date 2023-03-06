@@ -62,7 +62,7 @@ class BinTree:
         Renvoie le sous-arbre droit (un arbre vide si l'arbre droit vaut None)
         """
         if self.right==None:
-            return type(self)()
+            return type(self)() #renvoi du type de de la classe avec aucun arguments (ici BinTree()) ;  Cette manière permet d'éviter les problèmes lors de l'héritage
         else :
             return self.right
     
