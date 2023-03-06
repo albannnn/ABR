@@ -33,6 +33,7 @@ class BinTree:
         * preFixe()
         * postFixe()
         * infixe
+        * BFS()
         * __str__()
 
     """
