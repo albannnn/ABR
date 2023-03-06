@@ -26,12 +26,15 @@ class BinTree:
         * setGauche()
         * setDroit()
         * setRacine()
+        * maximum()
+        * minimum()
         * taille()
         * hauteur()
+        * preFixe()
+        * postFixe()
+        * infixe
         * __str__()
-    
 
-    
     """
     ## Constructeur
     
