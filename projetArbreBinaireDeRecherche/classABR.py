@@ -78,12 +78,31 @@ class ABR(BinTree):
             return 0
         else:
             return self.racine() + self.gauche().sommeCle() + self.droit().sommeCle()
- 
+    
+    def supprimeCle(self, n:int) -> None:
+        """ Méthode permettant de supprimer un noeud de l'abr """
+        assert type(n) is int, "La valeur à supprimer doit être un entier"
+        assert self.isInABR(n), "La valeur à supprimer doit être dans l'arbre"
+        # 3 cas possibles, 1° La valeur à supprimer est une feuille,2° La valeur à supprimer n'a qu'un enfant,3° La valuer à supprimer a 2 enfants
+        if self.racine() > n: # 1 Valeur + petite que racine, on résoud à partir du sag
+            self.gauche().supprimeCle(n) 
+        elif self.racine() < n:#2 valeur + grande que la racine, on résoud à partir du sad
+            self.droit().supprimeCle(n)
+        else: # Quand on a trouvé la valeur recherché : Alors on en vient aux 3 cas possibles expliqués plus tôt
+            if self.estFeuille():
+                self.setRacine(ABR()) # 1er cas : on supprime la valeur en la remplaçant par un ABR vide
+            elif self.droit().estVide() :
+                self.setRacine(self.gauche()) #2eme cas : on remplace la racine par le sag si pas de sad
+            elif self.gauche().estVide():
+                self.setRacine(self.droit()) #2eme cas : on remplace la racine par le sad si pas de sag
+            else:
+               #Dernier cas, il faut trouver le successeur du noeud : c'est à dire le plus grand de son sag ou le minimum de son sad. Nous utiliserons le 1er cas avec le + grand du sag
+                  successeur = self.gauche().maximum()
+                  self.setRacine(successeur)
+                  self.supprimeCle(successeur)
 
  
-arbre = ABR(3, 
-            ABR(1), 
-            ABR(5))
+arbre = ABR(3, ABR(1), ABR(5))
 
 arbre.insereCle(8) #8 est mtn dans l'abr
 
