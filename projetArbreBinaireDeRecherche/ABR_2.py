@@ -25,13 +25,13 @@ def estABR(A:BinTree) -> bool:
     #assertion
     assert type(A) is BinTree, "!! A doit être un arbre binaire !!"
     #Programme
-    if A.estVide() or A.estFeuille(): #Un arbre vide est un abr par définition
+    if A.estVide() or A.estFeuille():
         return True
-    if not A.gauche().estVide() and A.gauche().maximum() > A.racine(): #Si une clé du sag est supérieure à la racine, ce n'est pas un abr
-            return False
-    if not A.droit().estVide() and A.droit().maximum() <= A.racine(): #Si une clé sad est inférieure ou égale à la racine, ce n'est pas un abr
-            return False
-    return estABR(A.gauche()) and estABR(A.droit()) #on résoud à partir des abr droits et gauches 
+    if not A.gauche().estVide() and A.gauche().maximum() > A.racine():
+        return False
+    if not A.droit().estVide() and A.droit().minimum() <= A.racine():
+        return False
+    return estABR(A.gauche()) and estABR(A.droit())
 
 @testABR
 def rechercheCle(A:BinTree, n :int) -> bool:
@@ -49,7 +49,7 @@ def rechercheCle(A:BinTree, n :int) -> bool:
 @testABR
 def insereCle(A:BinTree, n:int) -> BinTree:
     """ Renvoie un BinTree avec la clé insérée au bon endroit """
-    if not A.estVide(): #il faut d'abord vérifier que l'arbre dans lequel on est n'est pas vide
+    if not A.estVide():
         if A.racine() >= n: #1ere chose à faire, savoir si la racine est supérieure ou inférieure à la valeure recherchée
             if A.gauche().estVide(): # Si l'arbre dans lequel doit se trouver la valeur à insérer est vide on insère la valeur
                 A.setGauche(BinTree(n)) 
@@ -61,7 +61,7 @@ def insereCle(A:BinTree, n:int) -> BinTree:
             else:
                 insereCle(A.droit(), n)
     else:
-        A.setRacine(n) #Si notre arbre est vide il y a juste à changer la valeur de la racine
+        A.setRacine(n)
         
 
 def creerABR(intList:list) -> BinTree:
