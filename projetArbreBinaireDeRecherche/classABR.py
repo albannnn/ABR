@@ -103,15 +103,4 @@ class ABR(BinTree):
                   self.supprimeCle(successeur)
                   self.setRacine(successeur)
                   
-            
-arbre = ABR(3, 
-            ABR(1), 
-            ABR(5, ABR(4), ABR(9)))
-print(arbre)
-arbre.insereCle(8) #8 est mtn dans l'abr
-arbre.insereCle(2)
-arbre.insereCle(12)
-print(arbre)
-arbre.supprimeCle(5)
-
-print(arbre)
+           
